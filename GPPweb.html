@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Gallatin Peak Painters | Professional Painting Services</title>
+  <meta name="description" content="The Gallatin Peak Painters specializes in interior and exterior painting, deck staining, and gutter cleaning. Fully licensed and insured, locally owned and operated." />
+
+  <!-- Open Graph for social sharing (must be public URLs, not local file paths) -->
+  <meta property="og:title" content="The Gallatin Peak Painters | Professional Painting Services" />
+  <meta property="og:description" content="High-quality painting, deck staining, and gutter cleaning in the Gallatin Valley. Call for a free estimate!" />
+  <meta property="og:url" content="https://gallatinpeakpainters.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- IMPORTANT: og:image should be a publicly accessible HTTPS URL (recommended 1200x630, < 8MB) -->
+  <meta property="og:image" content="https://gallatinpeakpainters.com/assets/og-image.jpg" />
+  <meta property="og:image:alt" content="The Gallatin Peak Painters logo and branded background" />
+
+  <!-- Optional: favicon (if you have one) -->
+  <!-- <link rel="icon" href="/assets/favicon.ico" /> -->
+
+  <style>
+    :root{
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #2d5f73;
+      --brand-2: #2d733e;
+      --border: rgba(15, 23, 42, 0.10);
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .container{
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header{
+      background: linear-gradient(135deg, var(--brand), #214a5b);
+      color: #fff;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease;
+    }
+
+    header.is-hidden{
+      transform: translateY(-100%);
+    }
+
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 240px;
+    }
+
+    .brand img{
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.10);
+      padding: 6px;
+    }
+
+    .brand-title{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title strong{
+      font-size: 1.1rem;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-title span{
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a{
+      color: rgba(255,255,255,0.95);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    nav a:hover{
+      background: rgba(255,255,255,0.12);
+      text-decoration: none;
+    }
+
+    .cta{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-left: 8px;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); text-decoration: none; }
+    .btn-primary{
+      background: #ffffff;
+      color: #103243;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+    .btn-primary:hover{ box-shadow: 0 12px 26px rgba(0,0,0,0.18); }
+    .btn-ghost{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,0.16); }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      background: url("GallatinPeak.jpg") center/cover no-repeat;
+      background-position: 50% 20%;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      margin-top: 0;
+    }
+
+    .hero::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.72),
+        rgba(15, 23, 42, 0.35)
+      );
+    }
+
+    .hero-inner{
+      position: relative;
+      padding: 64px 0;
+      display: grid;
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .hero h1{
+      margin: 0;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    .hero p{
+      margin: 0;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    /* Sections */
+    main{
+      padding: 36px 0 58px;
+    }
+
+    section{
+      margin-top: 28px;
+      scroll-margin-top: 110px;
+    }
+
+    .section-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2{
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.2px;
+    }
+
+    .section-title p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+
+    .grid{
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3{
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    #services .card{
+      border: 2px solid rgba(45,115,62,0.5);
+    }
+
+    #testimonials .card,
+    #contact .card{
+      border: 2px solid rgba(45,115,62,0.5);
+    }
+
+    #services .services-gallery{
+      border: 2px solid rgba(45,115,62,0.5);
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0b3b22;
+      background: rgba(45,115,62,0.12);
+      border: 1px solid rgba(45,115,62,0.18);
+      border-radius: 999px;
+      padding: 8px 12px;
+      width: fit-content;
+    }
+
+    .services-gallery{
+      position: relative;
+      margin-top: 18px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: #000;
+      min-height: 720px;
+    }
+
+    .services-gallery img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .services-gallery img.active{
+      opacity: 1;
+    }
+
+    /* Contact area */
+    .split{
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    form{
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .form-row{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label{
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    input, textarea{
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(45,95,115,0.55);
+      box-shadow: 0 0 0 4px rgba(45,95,115,0.12);
+    }
+
+    textarea{ min-height: 120px; resize: vertical; }
+
+    .submit{
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: var(--brand-2);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .08s ease, filter .2s ease;
+    }
+    .submit:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+
+    .contact-box a{
+      color: var(--brand);
+      font-weight: 800;
+    }
+
+    footer{
+      background: #0b1f2a;
+      color: rgba(255,255,255,0.86);
+      padding: 18px 0;
+    }
+
+    footer .footer-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid-3{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .form-row{ grid-template-columns: 1fr; }
+      nav{ justify-content: flex-start; }
+      .brand{ min-width: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <img src="GPPlogoW.jpg" alt="Gallatin Peak Painters logo">
+        <div class="brand-title">
+          <strong>The Gallatin Peak Painters</strong>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <div class="cta">
+          <a class="btn btn-ghost" href="mailto:TheGallatinPeakPainters@gmail.com">Email Us</a>
+          <a class="btn btn-primary" href="tel:+14065160882">Call (406) 516-0882</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Professional Painting in the Gallatin Valley</h1>
+      <p>Interior & exterior painting, deck staining, and gutter cleaning — done clean, on time, and with lasting results.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Get a Free Estimate</a>
+        <a class="btn btn-ghost" href="#services">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="services">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Residential & small commercial</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Interior Painting</h3>
+          <p>Clean lines, smooth finishes, and careful prep. We protect floors, furniture, and trim — then leave your home spotless.</p>
+        </div>
+        <div class="card">
+          <h3>Exterior Painting</h3>
+          <p>Durable coatings built for harsh Montana weather. Proper scraping, sanding, and priming for long-lasting protection.</p>
+        </div>
+        <div class="card">
+          <h3>Deck Staining</h3>
+          <p>Stain and seal services that keep your deck looking great while protecting against sun, moisture, and wear.</p>
+        </div>
+      </div>
+
+      <div style="height: 12px;"></div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Gutter Cleaning</h3>
+          <p>Prevent backups and damage with seasonal cleanouts. We remove debris and check downspouts for proper flow.</p>
+        </div>
+        <div class="card">
+          <h3>Prep & Repairs</h3>
+          <p>Light patching, caulking, sanding, and surface prep so the finished paint looks sharp and holds up.</p>
+        </div>
+        <div class="card">
+          <h3>Free Estimates</h3>
+          <p>Tell us what you need and we’ll provide a clear estimate and timeline.</p>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 18px;">
+        <h2>Project Gallery</h2>
+        <p>Results from the Gallatin Valley Area</p>
+      </div>
+
+      <div class="services-gallery" aria-label="Project gallery">
+        <img class="active" src="projectImages/FinalFront.png" alt="Front exterior painting project">
+        <img src="projectImages/FinalGarage.png" alt="Garage painting project">
+        <img src="projectImages/FinalGutter.png" alt="Gutter cleaning project">
+        <img src="projectImages/side.png" alt="Side exterior painting project">
+        <img src="projectImages/garage.png" alt="Garage exterior painting project">
+        <img src="projectImages/LowerDeck.png" alt="Lower deck staining project">
+        <img src="projectImages/TopDeck.png" alt="Top deck staining project">
+        <img src="projectImages/StairsDeck.png" alt="Stairs deck staining project">
+        <img src="projectImages/PorchRails.png" alt="Porch rails painting project">
+        <img src="projectImages/porch_railing_side_by_side.png" alt="Porch railing side-by-side project">
+        <img src="projectImages/LivingRoom1.png" alt="Living room interior painting project">
+        <img src="projectImages/LivingRoom2.png" alt="Living room interior painting project">
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="section-title">
+        <h2>What Customers Say</h2>
+        <p>Add real reviews here when you have them</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>“They showed up when they said they would, did a really clean job, and left the place looking great. I’d hire them again.”</h3>
+          <p>-Sarah P</p>
+        </div>
+        <div class="card">
+          <h3>“Quick estimate, good communication, and the finished work looks awesome”</h3>
+          <p>-Jamie S</p>
+        </div>
+        <div class="card">
+          <h3>“Has done 2 jobs for me, great prices and solid work”</h3>
+          <p>-Michael R</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Get a free estimate</p>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h3>Request an Estimate</h3>
+          <p style="margin-top: 6px; color: var(--muted);">Send your info and we’ll get back to you as soon as possible.</p>
+
+          <form action="https://formsubmit.co/thegallatinpeakpainters@gmail.com" method="POST">
+            <!-- FormSubmit options -->
+            <input type="hidden" name="_subject" value="New Estimate Request - Gallatin Peak Painters">
+            <input type="hidden" name="_captcha" value="false">
+            <!-- Redirect after submit (create a thanks.html page later) -->
+            <input type="hidden" name="_next" value="https://gallatinpeakpainters.com/thanks.html">
+
+            <div class="form-row">
+              <div>
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="Full Name" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="zip-code">Zip Code</label>
+                <input type="text" id="zip-code" name="Zip Code" autocomplete="postal-code" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" autocomplete="email" required>
+              </div>
+              <div>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="Phone Number" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div>
+              <label for="details">Project Details (optional)</label>
+              <textarea id="details" name="Project Details" placeholder="What do you want painted/stained? Approx. timeline?"></textarea>
+            </div>
+
+            <button class="submit" type="submit">Send Request</button>
+          </form>
+        </div>
+
+        <aside class="card contact-box">
+          <h3>Reach Us Directly</h3>
+          <p style="color: var(--muted); margin-top: 6px;">Prefer to call or email? No problem.</p>
+
+          <p><strong>Phone:</strong> <a href="tel:+14065160882">(406) 516-0882</a></p>
+          <p><strong>Email:</strong> <a href="mailto:TheGallatinPeakPainters@gmail.com">TheGallatinPeakPainters@gmail.com</a></p>
+
+          <div class="badge" style="margin-top: 14px;">Serving the Gallatin Valley Area</div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2024 The Gallatin Peak Painters</div>
+      <div>Licensed & Insured • Locally Owned</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const gallery = document.querySelector(".services-gallery");
+      if (!gallery) return;
+      const slides = Array.from(gallery.querySelectorAll("img"));
+      if (slides.length <= 1) return;
+
+      let index = 0;
+      const show = (next) => {
+        slides[index].classList.remove("active");
+        index = next;
+        slides[index].classList.add("active");
+      };
+
+      setInterval(() => {
+        const next = (index + 1) % slides.length;
+        show(next);
+      }, 3500);
+    })();
+  </script>
+  <script>
+    (function(){
+      const header = document.querySelector("header");
+      if (!header) return;
+      const hero = document.querySelector(".hero");
+      const hideAfter = hero ? (hero.offsetTop + hero.offsetHeight) : 120;
+      let lastY = window.scrollY;
+      let ticking = false;
+
+      const onScroll = () => {
+        const currentY = window.scrollY;
+        const goingDown = currentY > lastY;
+        if (goingDown && currentY > hideAfter){
+          header.classList.add("is-hidden");
+        } else {
+          header.classList.remove("is-hidden");
+        }
+        lastY = currentY;
+        ticking = false;
+      };
+
+      window.addEventListener("scroll", () => {
+        if (!ticking){
+          window.requestAnimationFrame(onScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
