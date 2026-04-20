@@ -533,12 +533,12 @@
           <h3>Request an Estimate</h3>
           <p style="margin-top: 6px; color: var(--muted);">Send your info and we’ll get back to you as soon as possible.</p>
 
-          <form action="https://formsubmit.co/thegallatinpeakpainters@gmail.com" method="POST">
+          <form id="contact-form" action="https://formsubmit.co/thegallatinpeakpainters@gmail.com" method="POST">
             <!-- FormSubmit options -->
             <input type="hidden" name="_subject" value="New Estimate Request - Gallatin Peak Painters">
             <input type="hidden" name="_captcha" value="false">
             <!-- Redirect after submit (create a thanks.html page later) -->
-            <input type="hidden" name="_next" value="https://gallatinpeakpainters.com">
+            <input type="hidden" name="_next" value="https://gallatinpeakpainters.com/thanks.html">
 
             <div class="form-row">
               <div>
@@ -592,6 +592,11 @@
   </footer>
 
   <script>
+      
+    
+<script>
+  
+<script>
     (function(){
       const gallery = document.querySelector(".services-gallery");
       if (!gallery) return;
@@ -611,6 +616,7 @@
       }, 3500);
     })();
   </script>
+  
   <script>
     (function(){
       const header = document.querySelector("header");
